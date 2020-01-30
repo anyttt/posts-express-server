@@ -10,7 +10,7 @@ const postRouter = express.Router();
 postRouter.use(bodyParser.json());
 
 postRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Posts.find({})
 	.populate('comments.author')
@@ -45,7 +45,7 @@ postRouter.route('/')
 });
 
 postRouter.route('/:postId')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Posts.findById(req.params.postId)
 	.populate('comments.author')
@@ -82,7 +82,7 @@ postRouter.route('/:postId')
 });
 
 postRouter.route('/:postId/comments')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Posts.findById(req.params.postId)
 	.populate('comments.author')
@@ -148,7 +148,7 @@ postRouter.route('/:postId/comments')
 });
 
 postRouter.route('/:postId/comments/:commentId')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Posts.findById(req.params.postId)
 	.populate('comments.author')

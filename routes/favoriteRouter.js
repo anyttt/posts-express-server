@@ -10,7 +10,7 @@ const favoriteRouter = express.Router();
 favoriteRouter.use(bodyParser.json());
 
 favoriteRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, authenticate.verifyUser,  (req, res, next) => {
 	Favorites.findOne({ 'user': req.user._id })
 	.populate('user')
@@ -85,7 +85,7 @@ favoriteRouter.route('/')
 })
 
 favoriteRouter.route('/:postId')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, authenticate.verifyUser, (req, res, next) => {
 	Favorites.findOne({ 'user': req.user._id })
 	.populate('posts')

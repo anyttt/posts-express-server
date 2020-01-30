@@ -10,7 +10,7 @@ const highlightRouter = express.Router();
 highlightRouter.use(bodyParser.json());
 
 highlightRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Highlights.find({})
 	.then((highlights) => {
@@ -45,7 +45,7 @@ highlightRouter.route('/')
 });
 
 highlightRouter.route('/:highlightId')
-.options(cors.corsWithOptions, (req, res) => { res.dendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
 	Highlights.findById(req.params.highlightId)
 	.then((highlight) => {
